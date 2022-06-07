@@ -1,7 +1,6 @@
 package com.inti.entities;
 
 import java.util.Date;
-
 import javax.persistence.Entity;
 
 @Entity
@@ -11,7 +10,10 @@ public class Annonce {
 	private Date dateAnnonce;
 
 	public Annonce() {
+	}
 
+	public Annonce(Date dateAnnonce) {
+		this.dateAnnonce = dateAnnonce;
 	}
 
 	public Long getIdAnnonce() {
