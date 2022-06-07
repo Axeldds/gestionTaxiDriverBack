@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Avis implements Serializable{
@@ -16,6 +18,12 @@ public class Avis implements Serializable{
 	private String titre;
 	private String note;
 	private String commentaire;
+	@ManyToOne
+	@JoinColumn(name = "id_client")
+	private Client client;
+	@ManyToOne
+	@JoinColumn(name = "id_chauffeur")
+	private Chauffeur chauffeur;
 	
 	public Avis() {
 	}
@@ -57,6 +65,23 @@ public class Avis implements Serializable{
 	public void setCommentaire(String commentaire) {
 		this.commentaire = commentaire;
 	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public Chauffeur getChauffeur() {
+		return chauffeur;
+	}
+
+	public void setChauffeur(Chauffeur chauffeur) {
+		this.chauffeur = chauffeur;
+	}
+	
 	
 	
 }

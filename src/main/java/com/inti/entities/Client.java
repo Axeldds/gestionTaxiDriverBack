@@ -1,11 +1,14 @@
 package com.inti.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Client implements Serializable{
@@ -17,7 +20,9 @@ public class Client implements Serializable{
 	private int age;
 	private String sexe;
 	private String ville;
-	
+	@OneToMany(mappedBy="client")
+	private List<Avis> aviss=new ArrayList<>();
+
 	public Client(String nomClient, String prenomClient, int age, String sexe, String ville) {
 		this.nomClient = nomClient;
 		this.prenomClient = prenomClient;
@@ -90,6 +95,14 @@ public class Client implements Serializable{
 		this.ville = ville;
 	}
 
+	public List<Avis> getAviss() {
+		return aviss;
+	}
+
+
+	public void setAviss(List<Avis> aviss) {
+		this.aviss = aviss;
+	}
 
 	@Override
 	public String toString() {
