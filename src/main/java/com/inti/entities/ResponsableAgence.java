@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class ResponsableAgence implements Serializable {
@@ -19,6 +20,10 @@ public class ResponsableAgence implements Serializable {
 	private String prenomResponsable;
 	@OneToMany(mappedBy = "resp")
 	private List<Annonce> annonces = new ArrayList<>();
+	@OneToMany(mappedBy = "resp")
+	private List<Rapport> rapports = new ArrayList<>();
+	@OneToOne
+	private Agence agence;
 
 	public ResponsableAgence() {
 
@@ -35,6 +40,42 @@ public class ResponsableAgence implements Serializable {
 		this.nomResponsable = nomResponsable;
 		this.prenomResponsable = prenomResponsable;
 		this.annonces = annonces;
+	}
+	
+	
+
+	public ResponsableAgence(Long idResponsable, String nomResponsable, String prenomResponsable,
+			List<Annonce> annonces, List<Rapport> rapports, Agence agence) {
+		this.idResponsable = idResponsable;
+		this.nomResponsable = nomResponsable;
+		this.prenomResponsable = prenomResponsable;
+		this.annonces = annonces;
+		this.rapports = rapports;
+		this.agence = agence;
+	}
+
+	public List<Annonce> getAnnonces() {
+		return annonces;
+	}
+
+	public void setAnnonces(List<Annonce> annonces) {
+		this.annonces = annonces;
+	}
+
+	public List<Rapport> getRapports() {
+		return rapports;
+	}
+
+	public void setRapports(List<Rapport> rapports) {
+		this.rapports = rapports;
+	}
+
+	public Agence getAgence() {
+		return agence;
+	}
+
+	public void setAgence(Agence agence) {
+		this.agence = agence;
 	}
 
 	public Long getIdResponsable() {
@@ -64,7 +105,10 @@ public class ResponsableAgence implements Serializable {
 	@Override
 	public String toString() {
 		return "ResponsableAgence [idResponsable=" + idResponsable + ", nomResponsable=" + nomResponsable
-				+ ", prenomResponsable=" + prenomResponsable + "]";
+				+ ", prenomResponsable=" + prenomResponsable + ", annonces=" + annonces + ", rapports=" + rapports
+				+ ", agence=" + agence + "]";
 	}
+
+
 
 }
