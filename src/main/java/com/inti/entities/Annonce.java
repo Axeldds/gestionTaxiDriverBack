@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -15,6 +16,7 @@ public class Annonce {
 	private Long idAnnonce;
 	private Date dateAnnonce;
 	@ManyToOne
+	@JoinColumn(name="id_responsable_agence")
 	private ResponsableAgence responsableAgence;
 	
 	public Annonce() {
@@ -42,8 +44,7 @@ public class Annonce {
 
 	@Override
 	public String toString() {
-		return "Annonce [idAnnonce=" + idAnnonce + ", dateAnnonce=" + dateAnnonce + ", responsableAgence="
-				+ responsableAgence + "]";
+		return "Annonce [idAnnonce=" + idAnnonce + ", dateAnnonce=" + dateAnnonce + "]";
 	}
 	
 	
