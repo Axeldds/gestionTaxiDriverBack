@@ -16,7 +16,7 @@ public class Administrateur implements Serializable {
 	private String nomAdministrateur;
 	private String prenomAdministrateur;
 	@OneToMany(mappedBy = "administrateur")
-	private Role role;
+	private Utilisateur utilisateur;
 
 	public Administrateur() {
 
@@ -27,10 +27,11 @@ public class Administrateur implements Serializable {
 		this.prenomAdministrateur = prenomAdministrateur;
 	}
 
-	public Administrateur(String nomAdministrateur, String prenomAdministrateur, Role role) {
+	public Administrateur(String nomAdministrateur, String prenomAdministrateur, Utilisateur utilisateur) {
+		super();
 		this.nomAdministrateur = nomAdministrateur;
 		this.prenomAdministrateur = prenomAdministrateur;
-		this.role = role;
+		this.utilisateur = utilisateur;
 	}
 
 	public Long getIdAdministrateur() {
@@ -57,18 +58,18 @@ public class Administrateur implements Serializable {
 		this.prenomAdministrateur = prenomAdministrateur;
 	}
 
-	public Role getRole() {
-		return role;
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
 
 	@Override
 	public String toString() {
 		return "Administrateur [idAdministrateur=" + idAdministrateur + ", nomAdministrateur=" + nomAdministrateur
-				+ ", prenomAdministrateur=" + prenomAdministrateur + ", role=" + role + "]";
+				+ ", prenomAdministrateur=" + prenomAdministrateur + ", utilisateur=" + utilisateur + "]";
 	}
 
 }
