@@ -18,8 +18,7 @@ public class Client implements Serializable{
 	private String sexe;
 	private String ville;
 	
-	public Client(long idClient, String nomClient, String prenomClient, int age, String sexe, String ville) {
-		this.idClient = idClient;
+	public Client(String nomClient, String prenomClient, int age, String sexe, String ville) {
 		this.nomClient = nomClient;
 		this.prenomClient = prenomClient;
 		this.age = age;

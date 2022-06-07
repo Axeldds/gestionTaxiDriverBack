@@ -14,10 +14,6 @@ public class Rapport implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idRapport;
 
-	public Rapport(long idRapport) {
-		this.idRapport = idRapport;
-	}
-
 	public Rapport() {
 	}
 
