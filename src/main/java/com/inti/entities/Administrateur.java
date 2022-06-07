@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Administrateur implements Serializable {
@@ -14,6 +15,8 @@ public class Administrateur implements Serializable {
 	private Long idAdministrateur;
 	private String nomAdministrateur;
 	private String prenomAdministrateur;
+	@OneToMany(mappedBy = "administrateur")
+	private Role role;
 
 	public Administrateur() {
 
@@ -22,6 +25,12 @@ public class Administrateur implements Serializable {
 	public Administrateur(String nomAdministrateur, String prenomAdministrateur) {
 		this.nomAdministrateur = nomAdministrateur;
 		this.prenomAdministrateur = prenomAdministrateur;
+	}
+
+	public Administrateur(String nomAdministrateur, String prenomAdministrateur, Role role) {
+		this.nomAdministrateur = nomAdministrateur;
+		this.prenomAdministrateur = prenomAdministrateur;
+		this.role = role;
 	}
 
 	public Long getIdAdministrateur() {
@@ -48,10 +57,18 @@ public class Administrateur implements Serializable {
 		this.prenomAdministrateur = prenomAdministrateur;
 	}
 
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
 	@Override
 	public String toString() {
 		return "Administrateur [idAdministrateur=" + idAdministrateur + ", nomAdministrateur=" + nomAdministrateur
-				+ ", prenomAdministrateur=" + prenomAdministrateur + "]";
+				+ ", prenomAdministrateur=" + prenomAdministrateur + ", role=" + role + "]";
 	}
 
 }
