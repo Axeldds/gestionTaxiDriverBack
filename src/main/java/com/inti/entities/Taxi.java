@@ -3,23 +3,37 @@ package com.inti.entities;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Taxi implements Serializable {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idTaxi;
 	private String modele;
 	private String marque;
 	private int kilometrage;
+	@OneToOne
+	private Chauffeur chauffeur;
 
 	public Taxi() {
 
 	}
 
 	public Taxi(String modele, String marque, int kilometrage) {
-		super();
 		this.modele = modele;
 		this.marque = marque;
 		this.kilometrage = kilometrage;
+	}
+
+	public Taxi(String modele, String marque, int kilometrage, Chauffeur chauffeur) {
+		this.modele = modele;
+		this.marque = marque;
+		this.kilometrage = kilometrage;
+		this.chauffeur = chauffeur;
 	}
 
 	public Long getIdTaxi() {
@@ -52,6 +66,14 @@ public class Taxi implements Serializable {
 
 	public void setKilometrage(int kilometrage) {
 		this.kilometrage = kilometrage;
+	}
+
+	public Chauffeur getChauffeur() {
+		return chauffeur;
+	}
+
+	public void setChauffeur(Chauffeur chauffeur) {
+		this.chauffeur = chauffeur;
 	}
 
 	@Override
