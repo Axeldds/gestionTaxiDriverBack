@@ -17,8 +17,7 @@ public class Reclamation implements Serializable {
 	public Reclamation() {
 	}
 
-	public Reclamation(long idReclamation, String texte) {
-		this.idReclamation = idReclamation;
+	public Reclamation(String texte) {
 		this.texte = texte;
 	}
 
