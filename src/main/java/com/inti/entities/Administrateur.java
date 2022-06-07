@@ -1,6 +1,7 @@
 package com.inti.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +17,7 @@ public class Administrateur implements Serializable {
 	private String nomAdministrateur;
 	private String prenomAdministrateur;
 	@OneToMany(mappedBy = "administrateur")
-	private Utilisateur utilisateur;
+	private List<Utilisateur> utilisateurs;
 
 	public Administrateur() {
 
@@ -27,11 +28,10 @@ public class Administrateur implements Serializable {
 		this.prenomAdministrateur = prenomAdministrateur;
 	}
 
-	public Administrateur(String nomAdministrateur, String prenomAdministrateur, Utilisateur utilisateur) {
-		super();
+	public Administrateur(String nomAdministrateur, String prenomAdministrateur, List<Utilisateur> utilisateurs) {
 		this.nomAdministrateur = nomAdministrateur;
 		this.prenomAdministrateur = prenomAdministrateur;
-		this.utilisateur = utilisateur;
+		this.utilisateurs = utilisateurs;
 	}
 
 	public Long getIdAdministrateur() {
@@ -58,18 +58,18 @@ public class Administrateur implements Serializable {
 		this.prenomAdministrateur = prenomAdministrateur;
 	}
 
-	public Utilisateur getUtilisateur() {
-		return utilisateur;
+	public List<Utilisateur> getUtilisateurs() {
+		return utilisateurs;
 	}
 
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
+	public void setUtilisateurs(List<Utilisateur> utilisateurs) {
+		this.utilisateurs = utilisateurs;
 	}
 
 	@Override
 	public String toString() {
 		return "Administrateur [idAdministrateur=" + idAdministrateur + ", nomAdministrateur=" + nomAdministrateur
-				+ ", prenomAdministrateur=" + prenomAdministrateur + ", utilisateur=" + utilisateur + "]";
+				+ ", prenomAdministrateur=" + prenomAdministrateur + "]";
 	}
 
 }
