@@ -14,10 +14,6 @@ public class Annonce {
 
 	}
 
-	public Annonce(Date dateAnnonce) {
-		this.dateAnnonce = dateAnnonce;
-	}
-
 	public Long getIdAnnonce() {
 		return idAnnonce;
 	}
@@ -33,5 +29,5 @@ public class Annonce {
 	public void setDateAnnonce(Date dateAnnonce) {
 		this.dateAnnonce = dateAnnonce;
 	}
-
+	
 }
