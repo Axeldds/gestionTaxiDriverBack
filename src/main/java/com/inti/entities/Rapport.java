@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Rapport implements Serializable {
@@ -13,7 +15,11 @@ public class Rapport implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idRapport;
-
+	
+	@ManyToOne
+	@JoinColumn(name="id_responsable_agence")
+	private ResponsableAgence responsableAgence;
+	
 	public Rapport() {
 	}
 
