@@ -14,6 +14,6 @@ public interface ITaxiService {
 	
 	void delete (Long id);
 	
-	List<Taxi> findByImmatriculation(String immatriculation);
+	Taxi findByImmatriculation(String immatriculation);
 
 }

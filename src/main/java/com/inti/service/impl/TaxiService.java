@@ -35,8 +35,10 @@ public class TaxiService implements ITaxiService{
 	}
 
 	@Override
-	public List<Taxi> findByImmatriculation(String immatriculation) {
-		return taxiRepository.findByImmatriculation(immatriculation);
+	public Taxi findByImmatriculation(String immatriculation) {
+		return (Taxi) taxiRepository.findByImmatriculation(immatriculation);
 	}
+
+	
 
 }
