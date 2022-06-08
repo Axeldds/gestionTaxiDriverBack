@@ -69,9 +69,10 @@ public class Reclamation implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Reclamation [idReclamation=" + idReclamation + ", texte=" + texte + ", agence=" + agence + ", client="
-				+ client + "]";
+		return "Reclamation [idReclamation=" + idReclamation + ", texte=" + texte + "]";
 	}
+
+	
 
 
 
