@@ -7,5 +7,4 @@ import com.inti.entities.Agence;
 
 @Repository
 public interface AgenceRepository extends JpaRepository<Agence, Long>{
-	Agence findByIdAgence(Long idAgence);
 }

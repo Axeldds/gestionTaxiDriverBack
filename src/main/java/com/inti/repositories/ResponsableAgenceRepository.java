@@ -7,5 +7,4 @@ import com.inti.entities.ResponsableAgence;
 
 @Repository
 public interface ResponsableAgenceRepository extends JpaRepository<ResponsableAgence, Long>{
-	ResponsableAgence findByIdResp(Long idResponsable);
 }
