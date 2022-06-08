@@ -15,4 +15,5 @@ public interface IAvisService {
 
 	void delete(Long id);
 	
+	List<Avis> findByNoteAvis(int note);
 }
