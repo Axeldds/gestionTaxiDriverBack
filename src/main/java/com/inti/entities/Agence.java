@@ -1,6 +1,11 @@
 package com.inti.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Agence {
@@ -9,6 +14,10 @@ public class Agence {
 	private String nomAgence;
 	private String adresse;
 	private float chiffreAffaire;
+	@OneToOne
+	private ResponsableAgence resp;
+	@OneToMany(mappedBy = "agence")
+	private List<Reclamation> reclamations = new ArrayList<>();
 
 	public Agence() {
 
@@ -18,6 +27,36 @@ public class Agence {
 		this.nomAgence = nomAgence;
 		this.adresse = adresse;
 		this.chiffreAffaire = chiffreAffaire;
+	}
+	
+	
+
+	public Agence(Long idAgence, String nomAgence, String adresse, float chiffreAffaire, ResponsableAgence resp,
+			List<Reclamation> reclamations) {
+		this.idAgence = idAgence;
+		this.nomAgence = nomAgence;
+		this.adresse = adresse;
+		this.chiffreAffaire = chiffreAffaire;
+		this.resp = resp;
+		this.reclamations = reclamations;
+	}
+
+	
+	
+	public ResponsableAgence getResp() {
+		return resp;
+	}
+
+	public void setResp(ResponsableAgence resp) {
+		this.resp = resp;
+	}
+
+	public List<Reclamation> getReclamations() {
+		return reclamations;
+	}
+
+	public void setReclamations(List<Reclamation> reclamations) {
+		this.reclamations = reclamations;
 	}
 
 	public Long getIdAgence() {
@@ -50,6 +89,12 @@ public class Agence {
 
 	public void setChiffreAffaire(float chiffreAffaire) {
 		this.chiffreAffaire = chiffreAffaire;
+	}
+
+	@Override
+	public String toString() {
+		return "Agence [idAgence=" + idAgence + ", nomAgence=" + nomAgence + ", adresse=" + adresse
+				+ ", chiffreAffaire=" + chiffreAffaire + ", resp=" + resp + ", reclamations=" + reclamations + "]";
 	}
 
 }
