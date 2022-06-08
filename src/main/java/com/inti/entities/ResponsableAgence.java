@@ -36,19 +36,14 @@ public class ResponsableAgence implements Serializable {
 		this.prenomResponsable = prenomResponsable;
 	}
 
-	public ResponsableAgence(Long idResponsable, String nomResponsable, String prenomResponsable,
-			List<Annonce> annonces) {
-		this.idResponsable = idResponsable;
+	public ResponsableAgence(String nomResponsable, String prenomResponsable, List<Annonce> annonces) {
 		this.nomResponsable = nomResponsable;
 		this.prenomResponsable = prenomResponsable;
 		this.annonces = annonces;
 	}
-	
-	
 
-	public ResponsableAgence(Long idResponsable, String nomResponsable, String prenomResponsable,
-			List<Annonce> annonces, List<Rapport> rapports, Agence agence) {
-		this.idResponsable = idResponsable;
+	public ResponsableAgence(String nomResponsable, String prenomResponsable, List<Annonce> annonces,
+			List<Rapport> rapports, Agence agence) {
 		this.nomResponsable = nomResponsable;
 		this.prenomResponsable = prenomResponsable;
 		this.annonces = annonces;
@@ -107,10 +102,7 @@ public class ResponsableAgence implements Serializable {
 	@Override
 	public String toString() {
 		return "ResponsableAgence [idResponsable=" + idResponsable + ", nomResponsable=" + nomResponsable
-				+ ", prenomResponsable=" + prenomResponsable + ", annonces=" + annonces + ", rapports=" + rapports
-				+ ", agence=" + agence + "]";
+				+ ", prenomResponsable=" + prenomResponsable + "]";
 	}
-
-
 
 }
