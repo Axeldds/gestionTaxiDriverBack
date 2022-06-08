@@ -71,9 +71,4 @@ public class Reclamation implements Serializable {
 	public String toString() {
 		return "Reclamation [idReclamation=" + idReclamation + ", texte=" + texte + "]";
 	}
-
-	
-
-
-
 }
