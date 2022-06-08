@@ -18,13 +18,13 @@ public class ResponsableAgence implements Serializable {
 	private Long idResponsable;
 	private String nomResponsable;
 	private String prenomResponsable;
-	@OneToMany(mappedBy = "resp")
+	@OneToMany(mappedBy = "responsableAgence")
 	private List<Annonce> annonces = new ArrayList<>();
-	@OneToMany(mappedBy = "resp")
+	@OneToMany(mappedBy = "responsableAgence")
 	private List<Rapport> rapports = new ArrayList<>();
 	@OneToOne
 	private Agence agence;
-	@OneToMany(mappedBy = "resp")
+	@OneToMany(mappedBy = "responsableAgence")
 	private List<Utilisateur> utilisateurs = new ArrayList<>();
 
 	public ResponsableAgence() {
