@@ -3,6 +3,7 @@ package com.inti.controller;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,8 +15,9 @@ import com.inti.service.interfaces.IUtilisateurService;
 public class LoginController {
 	@Autowired
 	IUtilisateurService utilisateurService;
-
-	@RequestMapping(value = "/user")
+	
+	@CrossOrigin
+	@RequestMapping(value="/user")
 	public Utilisateur login(Principal principal) {
 		return utilisateurService.findByUsername(principal.getName());
 	}
