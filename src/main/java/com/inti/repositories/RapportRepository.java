@@ -7,5 +7,4 @@ import com.inti.entities.Rapport;
 
 @Repository
 public interface RapportRepository extends JpaRepository<Rapport,Long>{
-	Rapport findById(long id_rapport);
 }

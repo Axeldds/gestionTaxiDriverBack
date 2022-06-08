@@ -7,5 +7,4 @@ import com.inti.entities.Reclamation;
 
 @Repository
 public interface ReclamationRepository extends JpaRepository<Reclamation,Long> {
-	Reclamation findById(long idReclamation);
 }
