@@ -9,6 +9,8 @@ import com.inti.entities.Chauffeur;
 @Repository
 public interface ChauffeurRepository extends JpaRepository<Chauffeur, Long>{
 	
+	Chauffeur findByIdChauffeur(Long id);
+	
 	List<Chauffeur> findByNomChauffeur(String nomChauffeur);
 	List<Chauffeur> findByPrenomChauffeur(String prenomChauffeur);
 }
