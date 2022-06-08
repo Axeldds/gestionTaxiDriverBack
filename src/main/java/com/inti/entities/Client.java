@@ -22,7 +22,7 @@ public class Client implements Serializable{
 	private String ville;
 	@OneToMany(mappedBy="client")
 	private List<Avis> aviss=new ArrayList<>();
-	@OneToMany(mappedBy="")
+	@OneToMany(mappedBy="client")
 	private List<Reservation> reservations=new ArrayList<>();
 
 	public Client(String nomClient, String prenomClient, int age, String sexe, String ville) {
@@ -105,6 +105,17 @@ public class Client implements Serializable{
 	public void setAviss(List<Avis> aviss) {
 		this.aviss = aviss;
 	}
+
+	
+	public List<Reservation> getReservations() {
+		return reservations;
+	}
+
+
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
+	}
+
 
 	@Override
 	public String toString() {

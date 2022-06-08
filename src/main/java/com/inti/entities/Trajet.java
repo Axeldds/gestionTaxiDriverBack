@@ -17,6 +17,7 @@ public class Trajet implements Serializable{
 	private String arrivee;
 	private int tempsTrajet;
 	
+	
 	public Trajet() {
 	}
 

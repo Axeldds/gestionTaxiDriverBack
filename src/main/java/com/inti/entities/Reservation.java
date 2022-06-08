@@ -2,13 +2,18 @@ package com.inti.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+
 
 @Entity
 public class Reservation implements Serializable{
@@ -21,6 +26,10 @@ public class Reservation implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "id_client")
 	private Client client;
+	@ManyToMany
+	@JoinTable(name = "TrajetReserve", joinColumns = @JoinColumn(name = "id_resevation",referencedColumnName="idReservation"),inverseJoinColumns = @JoinColumn(name="id_trajet",referencedColumnName="idTrajet"))
+	private Set<Trajet> trajets=new HashSet<>();
+	
 	
 	public Reservation() {
 	}
@@ -53,6 +62,23 @@ public class Reservation implements Serializable{
 	public void setDateFin(Date dateFin) {
 		this.dateFin = dateFin;
 	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public Set<Trajet> getTrajets() {
+		return trajets;
+	}
+
+	public void setTrajets(Set<Trajet> trajets) {
+		this.trajets = trajets;
+	}
+	
 	
 	
 }
