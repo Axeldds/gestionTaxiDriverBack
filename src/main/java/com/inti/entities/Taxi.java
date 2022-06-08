@@ -13,6 +13,7 @@ public class Taxi implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idTaxi;
+	private String immatriculation;
 	private String modele;
 	private String marque;
 	private int kilometrage;
@@ -23,13 +24,15 @@ public class Taxi implements Serializable {
 
 	}
 
-	public Taxi(String modele, String marque, int kilometrage) {
+	public Taxi(String immatriculation, String modele, String marque, int kilometrage) {
+		this.immatriculation = immatriculation;
 		this.modele = modele;
 		this.marque = marque;
 		this.kilometrage = kilometrage;
 	}
 
-	public Taxi(String modele, String marque, int kilometrage, Chauffeur chauffeur) {
+	public Taxi(String immatriculation, String modele, String marque, int kilometrage, Chauffeur chauffeur) {
+		this.immatriculation = immatriculation;
 		this.modele = modele;
 		this.marque = marque;
 		this.kilometrage = kilometrage;
@@ -76,10 +79,18 @@ public class Taxi implements Serializable {
 		this.chauffeur = chauffeur;
 	}
 
+	public String getImmatriculation() {
+		return immatriculation;
+	}
+
+	public void setImmatriculation(String immatriculation) {
+		this.immatriculation = immatriculation;
+	}
+
 	@Override
 	public String toString() {
-		return "Taxi [idTaxi=" + idTaxi + ", modele=" + modele + ", marque=" + marque + ", kilometrage=" + kilometrage
-				+ "]";
+		return "Taxi [idTaxi=" + idTaxi + ", immatriculation=" + immatriculation + ", modele=" + modele + ", marque="
+				+ marque + ", kilometrage=" + kilometrage + "]";
 	}
 
 }
