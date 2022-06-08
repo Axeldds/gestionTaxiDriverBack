@@ -43,7 +43,7 @@ public class AvisController {
 		avisService.delete(id);
 	}
 	
-	@PatchMapping("/avis/{idAvis}")
+	@PatchMapping("/aviss/{idAvis}")
 	public Avis updateAvisWithPatch(@PathVariable("idAvis") Long id, @RequestBody Avis avis) {
 		Avis currentAvis = avisService.findOne(id);
 		currentAvis.setCommentaire(avis.getCommentaire());
