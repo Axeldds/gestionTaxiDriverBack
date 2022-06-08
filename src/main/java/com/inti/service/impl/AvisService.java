@@ -37,8 +37,8 @@ public class AvisService implements IAvisService{
 	}
 
 	@Override
-	public List<Avis> findByNoteAvis(int note) {
-		return avisRepository.findByNoteAvis(note);
+	public List<Avis> findByNote(float note) {
+		return avisRepository.findByNote(note);
 	}
 
 }
