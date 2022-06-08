@@ -11,7 +11,5 @@ public interface IAnnonceService {
 	Annonce save(Annonce annonce);
 
 	void delete(Long id);
-	
-	Annonce findByIdAnnonce(Long idAnnonce);
 
 }

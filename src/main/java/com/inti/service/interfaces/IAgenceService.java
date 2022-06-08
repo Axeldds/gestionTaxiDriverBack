@@ -12,6 +12,4 @@ public interface IAgenceService {
 	Agence save(Agence agence);
 
 	void delete(Long id);
-	
-	Agence findByIdAgence(Long idAgence);
 }

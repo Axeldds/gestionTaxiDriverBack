@@ -12,6 +12,4 @@ public interface IResponsableAgenceService {
 	ResponsableAgence save(ResponsableAgence responsableAgence);
 
 	void delete(Long id);
-	
-	ResponsableAgence findByIdResp(Long idResponsable);
 }

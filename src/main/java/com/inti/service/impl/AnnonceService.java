@@ -35,9 +35,4 @@ public class AnnonceService implements IAnnonceService {
 		annonceRepository.deleteById(id);
 
 	}
-
-	@Override
-	public Annonce findByIdAnnonce(Long idAnnonce) {
-		return annonceRepository.findByIdAnnonce(idAnnonce);
-	}
 }
