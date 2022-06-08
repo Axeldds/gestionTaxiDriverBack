@@ -37,6 +37,20 @@ public class Client implements Serializable{
 		this.ville = ville;
 	}
 
+	public Client(String nomClient, String prenomClient, int age, String sexe, String ville, List<Avis> aviss,
+			List<Reservation> reservations, List<Reclamation> reclamations, List<Utilisateur> utilisateurs) {
+		super();
+		this.nomClient = nomClient;
+		this.prenomClient = prenomClient;
+		this.age = age;
+		this.sexe = sexe;
+		this.ville = ville;
+		this.aviss = aviss;
+		this.reservations = reservations;
+		this.reclamations = reclamations;
+		this.utilisateurs = utilisateurs;
+	}
+
 
 	public Client() {
 	}
