@@ -13,5 +13,5 @@ public interface IClientService {
 
 	void delete(Long idClient);
 	
-	Client findByNomPrenom(String nom, String prenom);
+	Client findByNomClientAndPrenomClient(String nom, String prenom);
 }

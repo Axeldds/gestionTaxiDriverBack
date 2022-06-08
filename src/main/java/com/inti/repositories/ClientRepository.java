@@ -7,5 +7,5 @@ import com.inti.entities.Client;
 
 @Repository
 public interface ClientRepository extends JpaRepository<Client,Long>{
-	Client findByNomPrenom(String nom, String prenom);
+	Client findByNomClientAndPrenomClient(String nom, String prenom);
 }

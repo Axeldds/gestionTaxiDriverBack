@@ -35,7 +35,7 @@ public class ClientService implements IClientService{
 	}
 
 	@Override
-	public Client findByNomPrenom(String nom, String prenom) {
-		return clientRepository.findByNomPrenom(nom, prenom);
+	public Client findByNomClientAndPrenomClient(String nom, String prenom) {
+		return clientRepository.findByNomClientAndPrenomClient(nom, prenom);
 	}
 }
