@@ -22,6 +22,8 @@ public class Client implements Serializable{
 	private String ville;
 	@OneToMany(mappedBy="client")
 	private List<Avis> aviss=new ArrayList<>();
+	@OneToMany(mappedBy="")
+	private List<Reservation> reservations=new ArrayList<>();
 
 	public Client(String nomClient, String prenomClient, int age, String sexe, String ville) {
 		this.nomClient = nomClient;

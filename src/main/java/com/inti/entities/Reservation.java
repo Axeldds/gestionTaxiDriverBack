@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Reservation implements Serializable{
@@ -16,6 +18,9 @@ public class Reservation implements Serializable{
 	private Long idReservation;
 	private Date dateDebut;
 	private Date dateFin;
+	@ManyToOne
+	@JoinColumn(name = "id_client")
+	private Client client;
 	
 	public Reservation() {
 	}
