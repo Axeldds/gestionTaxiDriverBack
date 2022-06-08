@@ -31,9 +31,8 @@ public class Agence {
 	
 	
 
-	public Agence(Long idAgence, String nomAgence, String adresse, float chiffreAffaire, ResponsableAgence resp,
+	public Agence(String nomAgence, String adresse, float chiffreAffaire, ResponsableAgence resp,
 			List<Reclamation> reclamations) {
-		this.idAgence = idAgence;
 		this.nomAgence = nomAgence;
 		this.adresse = adresse;
 		this.chiffreAffaire = chiffreAffaire;
@@ -94,7 +93,9 @@ public class Agence {
 	@Override
 	public String toString() {
 		return "Agence [idAgence=" + idAgence + ", nomAgence=" + nomAgence + ", adresse=" + adresse
-				+ ", chiffreAffaire=" + chiffreAffaire + ", resp=" + resp + ", reclamations=" + reclamations + "]";
+				+ ", chiffreAffaire=" + chiffreAffaire + "]";
 	}
+
+	
 
 }

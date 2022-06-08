@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Avis implements Serializable{
+public class Avis implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,7 @@ public class Avis implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "id_chauffeur")
 	private Chauffeur chauffeur;
-	
+
 	public Avis() {
 	}
 
@@ -32,6 +32,14 @@ public class Avis implements Serializable{
 		this.titre = titre;
 		this.note = note;
 		this.commentaire = commentaire;
+	}
+
+	public Avis(String titre, String note, String commentaire, Client client, Chauffeur chauffeur) {
+		this.titre = titre;
+		this.note = note;
+		this.commentaire = commentaire;
+		this.client = client;
+		this.chauffeur = chauffeur;
 	}
 
 	public Long getIdAvis() {
@@ -81,7 +89,10 @@ public class Avis implements Serializable{
 	public void setChauffeur(Chauffeur chauffeur) {
 		this.chauffeur = chauffeur;
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "Avis [titre=" + titre + ", note=" + note + ", commentaire=" + commentaire + "]";
+	}
+
 }
