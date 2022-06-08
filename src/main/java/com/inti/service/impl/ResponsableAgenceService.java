@@ -36,9 +36,4 @@ public class ResponsableAgenceService implements IResponsableAgenceService {
 
 	}
 
-	@Override
-	public ResponsableAgence findByIdResp(Long idResponsable) {
-		return responsableAgenceRepository.findByIdResp(idResponsable);
-	}
-
 }

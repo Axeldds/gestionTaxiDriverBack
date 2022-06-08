@@ -35,10 +35,4 @@ public class AgenceService implements IAgenceService {
 		agenceRepository.deleteById(id);
 
 	}
-
-	@Override
-	public Agence findByIdAgence(Long idAgence) {
-		return agenceRepository.findByIdAgence(idAgence);
-	}
-
 }
