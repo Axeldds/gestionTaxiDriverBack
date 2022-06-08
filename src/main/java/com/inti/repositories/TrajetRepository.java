@@ -7,6 +7,5 @@ import com.inti.entities.Trajet;
 
 @Repository
 public interface TrajetRepository extends JpaRepository<Trajet, Long>{
-	Trajet findByIdTrajet(Long idTrajet);
 	
 }

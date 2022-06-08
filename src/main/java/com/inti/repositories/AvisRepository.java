@@ -10,6 +10,5 @@ import com.inti.entities.Avis;
 @Repository
 public interface AvisRepository extends JpaRepository<Avis, Long>{
 	
-	Avis findByIdAvis(Long idAvis);
 	List<Avis> findByNoteAvis(int note);
 }

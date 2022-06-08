@@ -8,5 +8,4 @@ import com.inti.entities.Reservation;
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long>{
 
-	Reservation findByIdRerservation(Long idReservation);
 }
