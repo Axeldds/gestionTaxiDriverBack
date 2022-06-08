@@ -21,6 +21,11 @@ public class Annonce {
 	
 	public Annonce() {
 	}
+	
+	public Annonce(Date dateAnnonce, ResponsableAgence responsableAgence) {
+		this.dateAnnonce = dateAnnonce;
+		this.responsableAgence = responsableAgence;
+	}
 
 	public Annonce(Date dateAnnonce) {
 		this.dateAnnonce = dateAnnonce;
@@ -40,6 +45,15 @@ public class Annonce {
 
 	public void setDateAnnonce(Date dateAnnonce) {
 		this.dateAnnonce = dateAnnonce;
+	}
+	
+
+	public ResponsableAgence getResponsableAgence() {
+		return responsableAgence;
+	}
+
+	public void setResponsableAgence(ResponsableAgence responsableAgence) {
+		this.responsableAgence = responsableAgence;
 	}
 
 	@Override

@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +27,7 @@ public class Reservation implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "id_client")
 	private Client client;
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "TrajetReserve", joinColumns = @JoinColumn(name = "id_resevation",referencedColumnName="idReservation"),inverseJoinColumns = @JoinColumn(name="id_trajet",referencedColumnName="idTrajet"))
 	private Set<Trajet> trajets=new HashSet<>();
 	

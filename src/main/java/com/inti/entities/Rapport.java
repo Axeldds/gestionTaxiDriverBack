@@ -22,6 +22,10 @@ public class Rapport implements Serializable {
 	
 	public Rapport() {
 	}
+	
+	public Rapport(ResponsableAgence responsableAgence) {
+		this.responsableAgence = responsableAgence;
+	}
 
 	public long getIdRapport() {
 		return idRapport;
@@ -29,6 +33,14 @@ public class Rapport implements Serializable {
 
 	public void setIdRapport(long idRapport) {
 		this.idRapport = idRapport;
+	}
+	
+	public ResponsableAgence getResponsableAgence() {
+		return responsableAgence;
+	}
+
+	public void setResponsableAgence(ResponsableAgence responsableAgence) {
+		this.responsableAgence = responsableAgence;
 	}
 
 	@Override

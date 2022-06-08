@@ -34,6 +34,14 @@ public class Avis implements Serializable{
 		this.commentaire = commentaire;
 	}
 
+	public Avis(String titre, String note, String commentaire, Client client, Chauffeur chauffeur) {
+		this.titre = titre;
+		this.note = note;
+		this.commentaire = commentaire;
+		this.client = client;
+		this.chauffeur = chauffeur;
+	}
+
 	public Long getIdAvis() {
 		return idAvis;
 	}
