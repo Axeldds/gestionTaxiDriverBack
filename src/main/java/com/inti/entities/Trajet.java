@@ -58,6 +58,11 @@ public class Trajet implements Serializable{
 	public void setTempsTrajet(int tempsTrajet) {
 		this.tempsTrajet = tempsTrajet;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Trajet [idTrajet=" + idTrajet + ", depart=" + depart + ", arrivee=" + arrivee + ", tempsTrajet="
+				+ tempsTrajet + "]";
+	}
 	
 }
