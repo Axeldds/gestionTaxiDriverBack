@@ -2,6 +2,7 @@ package com.inti.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.inti.entities.Administrateur;
@@ -10,7 +11,7 @@ import com.inti.service.interfaces.IAdministrateurService;
 
 @Service
 public class AdministrateurService implements IAdministrateurService{
-	
+	@Autowired
 	AdministrateurRepository administrateurRepository;
 
 	@Override
