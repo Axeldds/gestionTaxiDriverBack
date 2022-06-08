@@ -16,7 +16,7 @@ public class Avis implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idAvis;
 	private String titre;
-	private String note;
+	private int note;
 	private String commentaire;
 	@ManyToOne
 	@JoinColumn(name = "id_client")
@@ -28,13 +28,13 @@ public class Avis implements Serializable {
 	public Avis() {
 	}
 
-	public Avis(String titre, String note, String commentaire) {
+	public Avis(String titre, int note, String commentaire) {
 		this.titre = titre;
 		this.note = note;
 		this.commentaire = commentaire;
 	}
 
-	public Avis(String titre, String note, String commentaire, Client client, Chauffeur chauffeur) {
+	public Avis(String titre, int note, String commentaire, Client client, Chauffeur chauffeur) {
 		this.titre = titre;
 		this.note = note;
 		this.commentaire = commentaire;
@@ -58,11 +58,11 @@ public class Avis implements Serializable {
 		this.titre = titre;
 	}
 
-	public String getNote() {
+	public int getNote() {
 		return note;
 	}
 
-	public void setNote(String note) {
+	public void setNote(int note) {
 		this.note = note;
 	}
 
