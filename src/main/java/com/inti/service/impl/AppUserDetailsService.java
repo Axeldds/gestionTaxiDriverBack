@@ -9,12 +9,13 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import com.inti.entities.Role;
 import com.inti.entities.Utilisateur;
 import com.inti.model.UtilisateurDetail;
 import com.inti.service.interfaces.IUtilisateurService;
-
+@Service
 public class AppUserDetailsService implements UserDetailsService{
 
 	@Autowired
