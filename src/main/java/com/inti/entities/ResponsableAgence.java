@@ -24,6 +24,8 @@ public class ResponsableAgence implements Serializable {
 	private List<Rapport> rapports = new ArrayList<>();
 	@OneToOne
 	private Agence agence;
+	@OneToMany(mappedBy = "resp")
+	private List<Utilisateur> utilisateurs = new ArrayList<>();
 
 	public ResponsableAgence() {
 
