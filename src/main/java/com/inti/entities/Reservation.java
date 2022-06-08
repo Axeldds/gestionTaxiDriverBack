@@ -79,7 +79,11 @@ public class Reservation implements Serializable{
 	public void setTrajets(Set<Trajet> trajets) {
 		this.trajets = trajets;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Reservation [idReservation=" + idReservation + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin
+				+ "]";
+	}
 	
 }
