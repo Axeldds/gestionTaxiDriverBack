@@ -28,7 +28,7 @@ public class TrajetController {
 	public List<Trajet> findAll() {
 		return trajetService.findAll();
 	}
-	@GetMapping("/trajets/{idTrajets}")
+	@GetMapping("/trajets/{idTrajet}")
 	public Trajet findOne(@PathVariable("idTrajet") Long id) {
 		return trajetService.findOne(id);
 	}
