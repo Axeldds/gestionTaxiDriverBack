@@ -3,6 +3,7 @@ package com.inti.controller;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,9 @@ import com.inti.service.interfaces.IUtilisateurService;
 public class LoginController {
 	@Autowired
 	IUtilisateurService utilisateurService;
+	
+	@Autowired
+	private BCryptPasswordEncoder baBCryptPasswordEncoder;
 	
 	@CrossOrigin
 	@RequestMapping(value="/user")

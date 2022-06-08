@@ -20,11 +20,13 @@ import org.springframework.web.filter.CorsFilter;
 import com.inti.service.impl.AppUserDetailsService;
 
 
+
 @Configuration // pour créer un bean avec le nom suivant : securityConfig
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private AppUserDetailsService appUserDetailsService;
+	
 	@Autowired
 	private BCryptPasswordEncoder baBCryptPasswordEncoder;
 
