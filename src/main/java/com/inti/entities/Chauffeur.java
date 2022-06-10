@@ -22,7 +22,7 @@ public class Chauffeur implements Serializable {
 	private List<Utilisateur> utilisateurs;
 	@OneToMany(mappedBy = "chauffeur")
 	private List<Avis> aviss;
-	@OneToOne(mappedBy = "chauffeur")
+	@OneToOne
 	private Taxi taxi;
 
 	public Chauffeur() {

@@ -17,7 +17,7 @@ public class Taxi implements Serializable {
 	private String modele;
 	private String marque;
 	private int kilometrage;
-	@OneToOne
+	@OneToOne(mappedBy = "taxi")
 	private Chauffeur chauffeur;
 
 	public Taxi() {
