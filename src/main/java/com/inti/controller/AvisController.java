@@ -49,4 +49,8 @@ public class AvisController {
 		currentAvis.setCommentaire(avis.getCommentaire());
 		return avisService.save(currentAvis);
 	}
+	@GetMapping("/aviss/note/{note}")
+	public List<Avis> findByNote(@PathVariable("note") float note){
+		return avisService.findByNote(note);
+	}
 }
