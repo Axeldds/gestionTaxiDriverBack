@@ -1,14 +1,19 @@
 package com.inti.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Chauffeur implements Serializable {
@@ -19,10 +24,11 @@ public class Chauffeur implements Serializable {
 	private String prenomChauffeur;
 	private int age;
 	@OneToMany(mappedBy = "chauffeur")
-	private List<Utilisateur> utilisateurs;
+	private List<Utilisateur> utilisateurs=new ArrayList<>();
 	@OneToMany(mappedBy = "chauffeur")
-	private List<Avis> aviss;
-	@OneToOne(mappedBy = "chauffeur")
+	private List<Avis> aviss=new ArrayList<>();
+	@OneToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name= "id_taxi", referencedColumnName = "idTaxi")
 	private Taxi taxi;
 
 	public Chauffeur() {
