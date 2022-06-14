@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -19,7 +21,8 @@ public class Agence implements Serializable {
 	private String nomAgence;
 	private String adresse;
 	private float chiffreAffaire;
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="id_resp", referencedColumnName = "idResponsable")
 	private ResponsableAgence resp;
 	@OneToMany(mappedBy = "agence")
 	private List<Reclamation> reclamations = new ArrayList<>();
