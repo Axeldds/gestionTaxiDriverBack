@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Client implements Serializable{
 	@Id
@@ -21,12 +23,16 @@ public class Client implements Serializable{
 	private String sexe;
 	private String ville;
 	@OneToMany(mappedBy="client")
+	@JsonIgnore
 	private List<Avis> aviss=new ArrayList<>();
 	@OneToMany(mappedBy="client")
+	@JsonIgnore
 	private List<Reservation> reservations=new ArrayList<>();
 	@OneToMany(mappedBy = "client")
+	@JsonIgnore
 	private List<Reclamation> reclamations=new ArrayList<>();
 	@OneToMany(mappedBy = "client")
+	@JsonIgnore
 	private List<Utilisateur> utilisateurs=new ArrayList<>();
 
 	public Client(String nomClient, String prenomClient, int age, String sexe, String ville) {
