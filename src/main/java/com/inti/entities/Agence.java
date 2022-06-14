@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Agence implements Serializable {
 	@Id
@@ -24,6 +26,7 @@ public class Agence implements Serializable {
 	@OneToMany(mappedBy = "agence")
 	private List<Reclamation> reclamations = new ArrayList<>();
 	@OneToMany(mappedBy = "agence")
+	@JsonIgnore
 	private List<Chauffeur> chauffeurs = new ArrayList<>();
 
 	public Agence() {

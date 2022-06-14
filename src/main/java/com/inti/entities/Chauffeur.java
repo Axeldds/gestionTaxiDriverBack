@@ -31,7 +31,7 @@ public class Chauffeur implements Serializable {
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_taxi", referencedColumnName = "idTaxi")
 	private Taxi taxi;
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "id_agence", referencedColumnName = "idAgence")
 	private Agence agence;
 
