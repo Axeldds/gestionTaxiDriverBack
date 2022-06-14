@@ -3,6 +3,7 @@ package com.inti.entities;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,11 +16,11 @@ public class Reclamation implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idReclamation;
 	private String texte;
-	@ManyToOne
-	@JoinColumn(name="id_agence")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="id_agence", referencedColumnName = "idAgence")
 	private Agence agence;
-	@ManyToOne
-	@JoinColumn(name="id_client")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="id_client", referencedColumnName = "idClient")
 	private Client client;
 	
 	public Reclamation(String texte, Agence agence, Client client) {
