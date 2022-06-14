@@ -27,6 +27,7 @@ public class Agence implements Serializable {
 	@JoinColumn(name="id_resp", referencedColumnName = "idResponsable")
 	private ResponsableAgence resp;
 	@OneToMany(mappedBy = "agence")
+	@JsonIgnore
 	private List<Reclamation> reclamations = new ArrayList<>();
 	@OneToMany(mappedBy = "agence")
 	@JsonIgnore
