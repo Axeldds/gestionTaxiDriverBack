@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -24,12 +25,15 @@ public class Chauffeur implements Serializable {
 	private String prenomChauffeur;
 	private int age;
 	@OneToMany(mappedBy = "chauffeur")
-	private List<Utilisateur> utilisateurs=new ArrayList<>();
+	private List<Utilisateur> utilisateurs = new ArrayList<>();
 	@OneToMany(mappedBy = "chauffeur")
-	private List<Avis> aviss=new ArrayList<>();
-	@OneToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name= "id_taxi", referencedColumnName = "idTaxi")
+	private List<Avis> aviss = new ArrayList<>();
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_taxi", referencedColumnName = "idTaxi")
 	private Taxi taxi;
+	@ManyToOne
+	@JoinColumn(name = "id_agence", referencedColumnName = "idAgence")
+	private Agence agence;
 
 	public Chauffeur() {
 
@@ -49,6 +53,18 @@ public class Chauffeur implements Serializable {
 		this.utilisateurs = utilisateurs;
 		this.aviss = aviss;
 		this.taxi = taxi;
+	}
+
+	public Chauffeur(String nomChauffeur, String prenomChauffeur, int age, List<Utilisateur> utilisateurs,
+			List<Avis> aviss, Taxi taxi, Agence agence) {
+		super();
+		this.nomChauffeur = nomChauffeur;
+		this.prenomChauffeur = prenomChauffeur;
+		this.age = age;
+		this.utilisateurs = utilisateurs;
+		this.aviss = aviss;
+		this.taxi = taxi;
+		this.agence = agence;
 	}
 
 	public Long getIdChauffeur() {
@@ -105,6 +121,16 @@ public class Chauffeur implements Serializable {
 
 	public void setTaxi(Taxi taxi) {
 		this.taxi = taxi;
+	}
+	
+	
+
+	public Agence getAgence() {
+		return agence;
+	}
+
+	public void setAgence(Agence agence) {
+		this.agence = agence;
 	}
 
 	@Override

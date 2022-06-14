@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Agence implements Serializable{
+public class Agence implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idAgence;
@@ -23,6 +23,8 @@ public class Agence implements Serializable{
 	private ResponsableAgence resp;
 	@OneToMany(mappedBy = "agence")
 	private List<Reclamation> reclamations = new ArrayList<>();
+	@OneToMany(mappedBy = "agence")
+	private List<Chauffeur> chauffeurs = new ArrayList<>();
 
 	public Agence() {
 
@@ -33,8 +35,6 @@ public class Agence implements Serializable{
 		this.adresse = adresse;
 		this.chiffreAffaire = chiffreAffaire;
 	}
-	
-	
 
 	public Agence(String nomAgence, String adresse, float chiffreAffaire, ResponsableAgence resp,
 			List<Reclamation> reclamations) {
@@ -45,8 +45,16 @@ public class Agence implements Serializable{
 		this.reclamations = reclamations;
 	}
 
-	
-	
+	public Agence(String nomAgence, String adresse, float chiffreAffaire, ResponsableAgence resp,
+			List<Reclamation> reclamations, List<Chauffeur> chauffeurs) {
+		this.nomAgence = nomAgence;
+		this.adresse = adresse;
+		this.chiffreAffaire = chiffreAffaire;
+		this.resp = resp;
+		this.reclamations = reclamations;
+		this.chauffeurs = chauffeurs;
+	}
+
 	public ResponsableAgence getResp() {
 		return resp;
 	}
@@ -95,12 +103,18 @@ public class Agence implements Serializable{
 		this.chiffreAffaire = chiffreAffaire;
 	}
 
+	public List<Chauffeur> getChauffeurs() {
+		return chauffeurs;
+	}
+
+	public void setChauffeurs(List<Chauffeur> chauffeurs) {
+		this.chauffeurs = chauffeurs;
+	}
+
 	@Override
 	public String toString() {
 		return "Agence [idAgence=" + idAgence + ", nomAgence=" + nomAgence + ", adresse=" + adresse
 				+ ", chiffreAffaire=" + chiffreAffaire + "]";
 	}
-
-	
 
 }
