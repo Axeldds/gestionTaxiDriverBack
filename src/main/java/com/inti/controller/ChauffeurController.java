@@ -45,7 +45,7 @@ public class ChauffeurController {
 	public Chauffeur updateChauffeurWithPatch(@PathVariable("idChauffeur") Long id,
 			@RequestBody Chauffeur chauffeur) {
 		Chauffeur currentUser = chauffeurService.findOne(id);
-		currentUser.setAge(chauffeur.getAge());
+		currentUser.setTaxi(chauffeur.getTaxi());
 		return chauffeurService.save(currentUser);
 	}
 
