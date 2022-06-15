@@ -1,5 +1,6 @@
 package com.inti.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,10 @@ public class ReservationController {
 		currentUser.setDateDebut(reservation.getDateDebut());
 		currentUser.setDateFin(reservation.getDateFin());
 		return reservationService.save(currentUser);
+	}
+	@GetMapping("reservations/dateDebut/{dateDebut}")
+	public List<Reservation> FindByDateDebut(@PathVariable("dateDebut") Date dateDebut){
+		return reservationService.findByDateDebut(dateDebut);
 	}
 
 }
