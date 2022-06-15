@@ -25,6 +25,7 @@ public class Annonce implements Serializable {
 	private Date dateAnnonce;
 	private float reduction;
 	private String description;
+	private String code;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_responsable_agence", referencedColumnName = "idResponsable")
 	private ResponsableAgence responsableAgence;
@@ -49,6 +50,17 @@ public class Annonce implements Serializable {
 		this.dateAnnonce = dateAnnonce;
 		this.reduction = reduction;
 		this.description = description;
+		this.responsableAgence = responsableAgence;
+		this.reservations = reservations;
+	}
+
+	public Annonce(Date dateAnnonce, float reduction, String description, String code,
+			ResponsableAgence responsableAgence, List<Reservation> reservations) {
+		super();
+		this.dateAnnonce = dateAnnonce;
+		this.reduction = reduction;
+		this.description = description;
+		this.code = code;
 		this.responsableAgence = responsableAgence;
 		this.reservations = reservations;
 	}
@@ -107,11 +119,19 @@ public class Annonce implements Serializable {
 		this.reservations = reservations;
 	}
 
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
 	@Override
 	public String toString() {
 		return "Annonce [idAnnonce=" + idAnnonce + ", dateAnnonce=" + dateAnnonce + ", reduction=" + reduction
-				+ ", description=" + description + ", responsableAgence=" + responsableAgence + ", reservations="
-				+ reservations + "]";
+				+ ", description=" + description + ", code=" + code + ", responsableAgence=" + responsableAgence
+				+ ", reservations=" + reservations + "]";
 	}
 
 }
