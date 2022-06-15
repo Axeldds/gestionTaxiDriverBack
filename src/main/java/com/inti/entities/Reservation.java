@@ -139,6 +139,7 @@ public class Reservation implements Serializable {
 
 	public void setAnnonce(Annonce annonce) {
 		this.annonce = annonce;
+	}
     
 	public void setAnnonces(List<Annonce> annonces) {
 		this.annonces = annonces;
