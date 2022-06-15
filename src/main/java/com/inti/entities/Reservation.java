@@ -121,6 +121,7 @@ public class Reservation implements Serializable {
 
 	public void setChauffeur(Chauffeur chauffeur) {
 		this.chauffeur = chauffeur;
+	}
 
 	public float getPrix() {
 		return prix;
