@@ -15,9 +15,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-
 @Entity
-public class Reservation implements Serializable{
+public class Reservation implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,16 +27,26 @@ public class Reservation implements Serializable{
 	@JoinColumn(name = "id_client")
 	private Client client;
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "TrajetReserve", joinColumns = @JoinColumn(name = "id_resevation",referencedColumnName="idReservation"),inverseJoinColumns = @JoinColumn(name="id_trajet",referencedColumnName="idTrajet"))
-	private Set<Trajet> trajets=new HashSet<>();
-	
-	
+	@JoinTable(name = "TrajetReserve", joinColumns = @JoinColumn(name = "id_resevation", referencedColumnName = "idReservation"), inverseJoinColumns = @JoinColumn(name = "id_trajet", referencedColumnName = "idTrajet"))
+	private Set<Trajet> trajets = new HashSet<>();
+	@ManyToOne
+	@JoinColumn(name="id_chauffeur")
+	private Chauffeur chauffeur;
+
 	public Reservation() {
 	}
 
 	public Reservation(Date dateDebut, Date dateFin) {
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
+	}
+
+	public Reservation(Date dateDebut, Date dateFin, Client client, Set<Trajet> trajets, Chauffeur chauffeur) {
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		this.client = client;
+		this.trajets = trajets;
+		this.chauffeur = chauffeur;
 	}
 
 	public Long getIdReservation() {
@@ -80,10 +89,18 @@ public class Reservation implements Serializable{
 		this.trajets = trajets;
 	}
 
+	public Chauffeur getChauffeur() {
+		return chauffeur;
+	}
+
+	public void setChauffeur(Chauffeur chauffeur) {
+		this.chauffeur = chauffeur;
+	}
+
 	@Override
 	public String toString() {
 		return "Reservation [idReservation=" + idReservation + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin
 				+ "]";
 	}
-	
+
 }
