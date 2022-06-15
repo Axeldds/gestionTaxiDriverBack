@@ -20,6 +20,7 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 @Entity
 public class Reservation implements Serializable {
 
@@ -36,8 +37,17 @@ public class Reservation implements Serializable {
 	@JoinTable(name = "TrajetReserve", joinColumns = @JoinColumn(name = "id_resevation", referencedColumnName = "idReservation"), inverseJoinColumns = @JoinColumn(name = "id_trajet", referencedColumnName = "idTrajet"))
 	private Set<Trajet> trajets = new HashSet<>();
 	@ManyToOne(fetch = FetchType.EAGER)
+
 	@JoinColumn(name = "id_annonce", referencedColumnName = "idAnnonce")
 	private Annonce annonce;
+
+	@JoinColumn(name="id_chauffeur", referencedColumnName = "idChauffeur")
+	private Chauffeur chauffeur;
+
+	@OneToMany(mappedBy = "reservation")
+	@JsonIgnore
+	private List<Annonce> annonces = new ArrayList<>();
+
 
 	public Reservation() {
 	}
@@ -57,6 +67,14 @@ public class Reservation implements Serializable {
 		this.client = client;
 		this.trajets = trajets;
 		this.annonce = annonce;
+	}
+
+	public Reservation(Date dateDebut, Date dateFin, Client client, Set<Trajet> trajets, Chauffeur chauffeur) {
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		this.client = client;
+		this.trajets = trajets;
+		this.chauffeur = chauffeur;
 	}
 
 	public Long getIdReservation() {
@@ -99,6 +117,14 @@ public class Reservation implements Serializable {
 		this.trajets = trajets;
 	}
 
+	public Chauffeur getChauffeur() {
+		return chauffeur;
+	}
+
+	public void setChauffeur(Chauffeur chauffeur) {
+		this.chauffeur = chauffeur;
+	}
+
 	public float getPrix() {
 		return prix;
 	}
@@ -113,6 +139,10 @@ public class Reservation implements Serializable {
 
 	public void setAnnonce(Annonce annonce) {
 		this.annonce = annonce;
+    
+	public void setAnnonces(List<Annonce> annonces) {
+		this.annonces = annonces;
+
 	}
 
 	@Override
