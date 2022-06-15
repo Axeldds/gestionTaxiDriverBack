@@ -1,8 +1,10 @@
 package com.inti.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -14,6 +16,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Reservation implements Serializable {
@@ -23,22 +29,41 @@ public class Reservation implements Serializable {
 	private Long idReservation;
 	private Date dateDebut;
 	private Date dateFin;
-	@ManyToOne
-	@JoinColumn(name = "id_client")
+	private float prix;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_client", referencedColumnName = "idClient")
 	private Client client;
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "TrajetReserve", joinColumns = @JoinColumn(name = "id_resevation", referencedColumnName = "idReservation"), inverseJoinColumns = @JoinColumn(name = "id_trajet", referencedColumnName = "idTrajet"))
 	private Set<Trajet> trajets = new HashSet<>();
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="id_chauffeur")
+	@JoinColumn(name="id_chauffeur", referencedColumnName = "idChauffeur")
 	private Chauffeur chauffeur;
+
+	@OneToMany(mappedBy = "reservation")
+	@JsonIgnore
+	private List<Annonce> annonces = new ArrayList<>();
+
 
 	public Reservation() {
 	}
 
-	public Reservation(Date dateDebut, Date dateFin) {
+	public Reservation(Date dateDebut, Date dateFin, float prix) {
+		super();
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
+		this.prix = prix;
+	}
+
+	public Reservation(Date dateDebut, Date dateFin, float prix, Client client, Set<Trajet> trajets,
+			List<Annonce> annonces) {
+		super();
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		this.prix = prix;
+		this.client = client;
+		this.trajets = trajets;
+		this.annonces = annonces;
 	}
 
 	public Reservation(Date dateDebut, Date dateFin, Client client, Set<Trajet> trajets, Chauffeur chauffeur) {
@@ -97,10 +122,27 @@ public class Reservation implements Serializable {
 		this.chauffeur = chauffeur;
 	}
 
+	public float getPrix() {
+		return prix;
+	}
+
+	public void setPrix(float prix) {
+		this.prix = prix;
+	}
+
+	public List<Annonce> getAnnonces() {
+		return annonces;
+	}
+
+	public void setAnnonces(List<Annonce> annonces) {
+		this.annonces = annonces;
+
+	}
+
 	@Override
 	public String toString() {
 		return "Reservation [idReservation=" + idReservation + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin
-				+ "]";
+				+ ", prix=" + prix + ", client=" + client + ", trajets=" + trajets + ", annonces=" + annonces + "]";
 	}
 
 }
