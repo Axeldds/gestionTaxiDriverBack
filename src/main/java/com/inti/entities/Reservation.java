@@ -36,9 +36,8 @@ public class Reservation implements Serializable {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "TrajetReserve", joinColumns = @JoinColumn(name = "id_resevation", referencedColumnName = "idReservation"), inverseJoinColumns = @JoinColumn(name = "id_trajet", referencedColumnName = "idTrajet"))
 	private Set<Trajet> trajets = new HashSet<>();
-
-	@ManyToOne
-	@JoinColumn(name="id_chauffeur")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="id_chauffeur", referencedColumnName = "idChauffeur")
 	private Chauffeur chauffeur;
 
 	@OneToMany(mappedBy = "reservation")
