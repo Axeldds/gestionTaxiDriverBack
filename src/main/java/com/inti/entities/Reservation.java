@@ -37,16 +37,11 @@ public class Reservation implements Serializable {
 	@JoinTable(name = "TrajetReserve", joinColumns = @JoinColumn(name = "id_resevation", referencedColumnName = "idReservation"), inverseJoinColumns = @JoinColumn(name = "id_trajet", referencedColumnName = "idTrajet"))
 	private Set<Trajet> trajets = new HashSet<>();
 	@ManyToOne(fetch = FetchType.EAGER)
-
 	@JoinColumn(name = "id_annonce", referencedColumnName = "idAnnonce")
 	private Annonce annonce;
 
 	@JoinColumn(name="id_chauffeur", referencedColumnName = "idChauffeur")
 	private Chauffeur chauffeur;
-
-	@OneToMany(mappedBy = "reservation")
-	@JsonIgnore
-	private List<Annonce> annonces = new ArrayList<>();
 
 
 	public Reservation() {
@@ -142,14 +137,15 @@ public class Reservation implements Serializable {
 	}
     
 	public void setAnnonces(List<Annonce> annonces) {
-		this.annonces = annonces;
-
+		this.annonce = annonce;
 	}
+   
 
 	@Override
 	public String toString() {
 		return "Reservation [idReservation=" + idReservation + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin
-				+ ", prix=" + prix + ", client=" + client + ", trajets=" + trajets + ", annonce=" + annonce + "]";
+				+ ", prix=" + prix + ", client=" + client + ", trajets=" + trajets + ", annonce=" + annonce
+				+ ", chauffeur=" + chauffeur + "]";
 	}
 
 }
