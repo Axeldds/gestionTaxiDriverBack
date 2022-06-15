@@ -1,7 +1,10 @@
 package com.inti.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -9,6 +12,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Annonce implements Serializable {
@@ -22,9 +28,9 @@ public class Annonce implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_responsable_agence", referencedColumnName = "idResponsable")
 	private ResponsableAgence responsableAgence;
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_reservation", referencedColumnName = "idReservation")
-	private Reservation reservation;
+	@OneToMany(mappedBy = "annonce")
+	@JsonIgnore
+	private List<Reservation> reservations = new ArrayList<>();
 
 	public Annonce() {
 	}
@@ -39,13 +45,12 @@ public class Annonce implements Serializable {
 	}
 
 	public Annonce(Date dateAnnonce, float reduction, String description, ResponsableAgence responsableAgence,
-			Reservation reservation) {
-		super();
+			List<Reservation> reservations) {
 		this.dateAnnonce = dateAnnonce;
 		this.reduction = reduction;
 		this.description = description;
 		this.responsableAgence = responsableAgence;
-		this.reservation = reservation;
+		this.reservations = reservations;
 	}
 
 	public Annonce(Date dateAnnonce, float reduction, String description) {
@@ -94,19 +99,19 @@ public class Annonce implements Serializable {
 		this.description = description;
 	}
 
-	public Reservation getReservation() {
-		return reservation;
+	public List<Reservation> getReservations() {
+		return reservations;
 	}
 
-	public void setReservation(Reservation reservation) {
-		this.reservation = reservation;
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
 	}
 
 	@Override
 	public String toString() {
 		return "Annonce [idAnnonce=" + idAnnonce + ", dateAnnonce=" + dateAnnonce + ", reduction=" + reduction
-				+ ", description=" + description + ", responsableAgence=" + responsableAgence + ", reservation="
-				+ reservation + "]";
+				+ ", description=" + description + ", responsableAgence=" + responsableAgence + ", reservations="
+				+ reservations + "]";
 	}
 
 }
