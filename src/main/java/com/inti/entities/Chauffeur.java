@@ -31,9 +31,12 @@ public class Chauffeur implements Serializable {
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_taxi", referencedColumnName = "idTaxi")
 	private Taxi taxi;
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_agence", referencedColumnName = "idAgence")
 	private Agence agence;
+	@OneToMany(mappedBy = "chauffeur")
+	@JsonIgnore
+	private List<Reservation> reservations = new ArrayList<>();
 
 	public Chauffeur() {
 
@@ -57,7 +60,6 @@ public class Chauffeur implements Serializable {
 
 	public Chauffeur(String nomChauffeur, String prenomChauffeur, int age, List<Utilisateur> utilisateurs,
 			List<Avis> aviss, Taxi taxi, Agence agence) {
-		super();
 		this.nomChauffeur = nomChauffeur;
 		this.prenomChauffeur = prenomChauffeur;
 		this.age = age;
@@ -65,6 +67,18 @@ public class Chauffeur implements Serializable {
 		this.aviss = aviss;
 		this.taxi = taxi;
 		this.agence = agence;
+	}
+
+	public Chauffeur(String nomChauffeur, String prenomChauffeur, int age, List<Utilisateur> utilisateurs,
+			List<Avis> aviss, Taxi taxi, Agence agence, List<Reservation> reservations) {
+		this.nomChauffeur = nomChauffeur;
+		this.prenomChauffeur = prenomChauffeur;
+		this.age = age;
+		this.utilisateurs = utilisateurs;
+		this.aviss = aviss;
+		this.taxi = taxi;
+		this.agence = agence;
+		this.reservations = reservations;
 	}
 
 	public Long getIdChauffeur() {
@@ -122,8 +136,6 @@ public class Chauffeur implements Serializable {
 	public void setTaxi(Taxi taxi) {
 		this.taxi = taxi;
 	}
-	
-	
 
 	public Agence getAgence() {
 		return agence;
@@ -131,6 +143,14 @@ public class Chauffeur implements Serializable {
 
 	public void setAgence(Agence agence) {
 		this.agence = agence;
+	}
+
+	public List<Reservation> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
 	}
 
 	@Override
