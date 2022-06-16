@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Administrateur implements Serializable {
 	@Id
@@ -17,6 +19,7 @@ public class Administrateur implements Serializable {
 	private String nomAdministrateur;
 	private String prenomAdministrateur;
 	@OneToMany(mappedBy = "administrateur")
+	@JsonIgnore
 	private List<Utilisateur> utilisateurs;
 
 	public Administrateur() {
