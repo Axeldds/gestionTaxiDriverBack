@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Trajet implements Serializable{
+public class Trajet implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,8 +16,8 @@ public class Trajet implements Serializable{
 	private String depart;
 	private String arrivee;
 	private int tempsTrajet;
-	
-	
+	private Reservation reservation;
+
 	public Trajet() {
 	}
 
@@ -25,6 +25,15 @@ public class Trajet implements Serializable{
 		this.depart = depart;
 		this.arrivee = arrivee;
 		this.tempsTrajet = tempsTrajet;
+	}
+
+	public Trajet(Long idTrajet, String depart, String arrivee, int tempsTrajet, Reservation reservation) {
+		super();
+		this.idTrajet = idTrajet;
+		this.depart = depart;
+		this.arrivee = arrivee;
+		this.tempsTrajet = tempsTrajet;
+		this.reservation = reservation;
 	}
 
 	public Long getIdTrajet() {
@@ -59,10 +68,18 @@ public class Trajet implements Serializable{
 		this.tempsTrajet = tempsTrajet;
 	}
 
+	public Reservation getReservation() {
+		return reservation;
+	}
+
+	public void setReservation(Reservation reservation) {
+		this.reservation = reservation;
+	}
+
 	@Override
 	public String toString() {
 		return "Trajet [idTrajet=" + idTrajet + ", depart=" + depart + ", arrivee=" + arrivee + ", tempsTrajet="
-				+ tempsTrajet + "]";
+				+ tempsTrajet + ", reservation=" + reservation + "]";
 	}
-	
+
 }
