@@ -25,6 +25,7 @@ public class Chauffeur implements Serializable {
 	private String prenomChauffeur;
 	private int age;
 	@OneToMany(mappedBy = "chauffeur")
+	@JsonIgnore
 	private List<Utilisateur> utilisateurs = new ArrayList<>();
 	@OneToMany(mappedBy = "chauffeur")
 	private List<Avis> aviss = new ArrayList<>();
