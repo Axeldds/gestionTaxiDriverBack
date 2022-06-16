@@ -17,9 +17,6 @@ public class LoginController {
 	@Autowired
 	IUtilisateurService utilisateurService;
 	
-	@Autowired
-	private BCryptPasswordEncoder baBCryptPasswordEncoder;
-	
 	@CrossOrigin
 	@RequestMapping(value="/user")
 	public Utilisateur login(Principal principal) {
