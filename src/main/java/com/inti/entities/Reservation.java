@@ -20,7 +20,6 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
 @Entity
 public class Reservation implements Serializable {
 
@@ -39,10 +38,9 @@ public class Reservation implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_annonce", referencedColumnName = "idAnnonce")
 	private Annonce annonce;
-
-	@JoinColumn(name="id_chauffeur", referencedColumnName = "idChauffeur")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_chauffeur", referencedColumnName = "idChauffeur")
 	private Chauffeur chauffeur;
-
 
 	public Reservation() {
 	}
@@ -135,7 +133,6 @@ public class Reservation implements Serializable {
 	public void setAnnonce(Annonce annonce) {
 		this.annonce = annonce;
 	}
-   
 
 	@Override
 	public String toString() {
