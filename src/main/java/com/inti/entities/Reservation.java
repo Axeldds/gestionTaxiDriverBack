@@ -39,7 +39,7 @@ public class Reservation implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_annonce", referencedColumnName = "idAnnonce")
 	private Annonce annonce;
-
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_chauffeur", referencedColumnName = "idChauffeur")
 	private Chauffeur chauffeur;
 
