@@ -11,7 +11,7 @@ import com.inti.entities.Reservation;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long>{
-	@Query(value="SELECT * FROM reservation ORDER BY dateDebut", nativeQuery = true)
+	@Query(value="SELECT * FROM reservation ORDER BY date_debut", nativeQuery = true)
 	List<Reservation> findByDateDebut(Date dateDebut);
 
 }
