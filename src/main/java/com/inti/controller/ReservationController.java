@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,7 +53,7 @@ public class ReservationController {
 		return reservationService.save(currentUser);
 	}
 	@GetMapping("reservations/dateDebut/{dateDebut}")
-	public List<Reservation> FindByDateDebut(@PathVariable("dateDebut") Date dateDebut){
+	public List<Reservation> FindByDateDebut(@PathVariable("dateDebut")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dateDebut){
 		return reservationService.findByDateDebut(dateDebut);
 	}
 
