@@ -28,6 +28,7 @@ public class Chauffeur implements Serializable {
 	@JsonIgnore
 	private List<Utilisateur> utilisateurs = new ArrayList<>();
 	@OneToMany(mappedBy = "chauffeur")
+	@JsonIgnore
 	private List<Avis> aviss = new ArrayList<>();
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_taxi", referencedColumnName = "idTaxi")
